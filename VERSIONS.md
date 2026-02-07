@@ -3,6 +3,20 @@
 This document tracks the version history of the Todo Full-Stack Web Application, detailing changes made in each release.
 
 
+## Version 1.3.2 - February 7, 2026
+
+### Added
+- Planned features documentation for upcoming releases
+- Offline mode capability for disconnected usage (planned)
+- Password reset and account recovery functionality (planned)
+- API rate limiting for enhanced security and performance (planned)
+- Connectivity issue handling for improved user experience (planned)
+- Enhanced README with planned features section
+
+### Changed
+- Updated README to reflect planned features that are not yet implemented
+- Refined feature documentation to distinguish between implemented and planned features
+
 ## Version 1.3.1 - February 7, 2026
 
 ### Added

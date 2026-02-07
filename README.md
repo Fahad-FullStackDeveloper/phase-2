@@ -94,6 +94,9 @@ This project follows the Agentic Dev Stack workflow:
 - **Email Notifications**: Deadline reminders, task assignments, and account alerts
 - **Responsive UI**: Works across different device sizes
 - **Automatic Token Refresh**: Seamless background refresh of JWT tokens
+- **Offline Mode**: Ability to work with tasks when disconnected from the internet (planned)
+- **Password Reset & Account Recovery**: Self-service options for account access (planned)
+- **API Rate Limiting**: Protection against abuse and ensuring fair usage (planned)
 
 ## Learn More
 
