@@ -1,138 +1,142 @@
 # Quickstart Guide: Full-Stack Todo Web Application
 
 ## Prerequisites
-- Node.js 18+ (for Next.js frontend)
-- Python 3.11+ (for FastAPI backend)
+
+- Node.js 18+ with npm/yarn
+- Python 3.11+
 - PostgreSQL (or Neon Serverless PostgreSQL account)
 - Git
 
 ## Setup Instructions
 
 ### 1. Clone the Repository
+
 ```bash
 git clone <repository-url>
 cd <repository-directory>
 ```
 
-### 2. Backend Setup (FastAPI)
-```bash
-# Navigate to backend directory
-cd backend
+### 2. Backend Setup (Python FastAPI)
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-# Install dependencies
-pip install -r requirements.txt
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
-# Set environment variables
-cp .env.example .env
-# Edit .env with your database and auth settings
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-# Run the backend server
-uvicorn main:app --reload
-```
+4. Set up environment variables:
+   ```bash
+   cp .env.example .env
+   # Edit .env with your database connection details and auth secrets
+   ```
+
+5. Run database migrations:
+   ```bash
+   alembic upgrade head
+   ```
+
+6. Start the backend server:
+   ```bash
+   uvicorn src.main:app --reload
+   ```
 
 ### 3. Frontend Setup (Next.js)
-```bash
-# Open a new terminal and navigate to frontend directory
-cd frontend
 
-# Install dependencies
-npm install
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend  # or if it's in the root directory
+   cd .
+   ```
 
-# Set environment variables
-cp .env.local.example .env.local
-# Edit .env.local with your API and auth settings
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-# Run the development server
-npm run dev
-```
+3. Set up environment variables:
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your API endpoint and auth configuration
+   ```
 
-### 4. Environment Variables
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-#### Backend (.env)
+## Environment Variables
+
+### Backend (.env)
 ```env
 DATABASE_URL=postgresql://username:password@localhost:5432/todo_app
-BETTER_AUTH_SECRET=your-secret-key-here
+BETTER_AUTH_SECRET=your-super-secret-jwt-key-here
 BETTER_AUTH_URL=http://localhost:3000
 ```
 
-#### Frontend (.env.local)
+### Frontend (.env.local)
 ```env
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000/api
 NEXT_PUBLIC_BETTER_AUTH_URL=http://localhost:3000
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
 ```
 
 ## Running the Application
 
-### Development Mode
-1. Start the backend server: `cd backend && uvicorn main:app --reload`
-2. In a separate terminal, start the frontend: `cd frontend && npm run dev`
+1. Start the backend server (port 8000 by default)
+2. Start the frontend server (port 3000 by default)
 3. Access the application at http://localhost:3000
 
-### Production Mode
-1. Build the frontend: `cd frontend && npm run build`
-2. Start the backend server with production settings
-3. Serve the frontend build files
+## API Endpoints
 
-## Key Endpoints
+Once running, the API will be available at `http://localhost:8000/api` with the following key endpoints:
 
-### Frontend
-- Home Page: `http://localhost:3000`
-- Authentication: `http://localhost:3000/login`, `http://localhost:3000/register`
-- Dashboard: `http://localhost:3000/dashboard`
-
-### Backend API
-- Base URL: `http://localhost:8000`
-- Health Check: `GET /health`
-- User Registration: `POST /api/auth/register`
-- User Login: `POST /api/auth/login`
-- Tasks: `GET/POST/PUT/DELETE /api/{user_id}/tasks/{id}`
+- `POST /auth/register` - User registration
+- `POST /auth/login` - User login
+- `GET /tasks` - Get user's tasks
+- `POST /tasks` - Create a new task
+- `PUT /tasks/{id}` - Update a task
+- `DELETE /tasks/{id}` - Delete a task
 
 ## Testing
 
 ### Backend Tests
 ```bash
 cd backend
-python -m pytest
+source venv/bin/activate
+pytest
 ```
 
 ### Frontend Tests
 ```bash
 cd frontend
-npm run test
+npm test
+# or
+yarn test
 ```
 
-## Database Migrations
-```bash
-cd backend
-# Generate migration
-alembic revision --autogenerate -m "Migration description"
+## Deployment
 
-# Apply migration
-alembic upgrade head
-```
+### Backend
+The backend is designed to work with any Python WSGI/ASGI hosting service. Configure your production environment variables appropriately.
+
+### Frontend
+The Next.js frontend can be deployed to Vercel, Netlify, or any hosting service that supports Next.js applications.
 
 ## Troubleshooting
 
-### Common Issues
-1. **Port already in use**: Change ports in package.json (frontend) or uvicorn command (backend)
-2. **Environment variables not loaded**: Ensure .env files are properly configured
-3. **Database connection errors**: Verify DATABASE_URL is correct and database is running
-4. **Authentication issues**: Check that BETTER_AUTH_SECRET is the same in both frontend and backend
-
-### Resetting the Development Environment
-```bash
-# Backend
-cd backend
-deactivate  # Exit virtual environment
-rm -rf venv  # Remove virtual environment
-python -m venv venv  # Recreate virtual environment
-
-# Frontend
-cd frontend
-rm -rf node_modules  # Remove node modules
-npm install  # Reinstall dependencies
-```
+- If you encounter database connection issues, verify your `DATABASE_URL` is correct
+- For authentication problems, ensure `BETTER_AUTH_SECRET` is the same in both frontend and backend
+- If API calls fail, check that your `NEXT_PUBLIC_API_BASE_URL` points to the correct backend address

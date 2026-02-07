@@ -1,69 +1,76 @@
 # Checklist: Full-Stack Todo Web Application Requirements Quality
 
-**Purpose**: Validate the completeness, clarity, and consistency of requirements for the Full-Stack Todo Web Application
+**Purpose**: Unit tests for requirements writing - validating quality, clarity, and completeness of requirements for the full-stack todo application
 **Created**: 2026-02-07
-**Focus**: Requirements quality validation across all feature domains
 
 ## Requirement Completeness
 
-- [ ] CHK001 - Are all authentication methods (email/password, Google) fully specified with implementation details? [Completeness, Spec §FR-001]
-- [ ] CHK002 - Are character limits for task titles (1-100) and descriptions (up to 1000) explicitly defined in all relevant sections? [Completeness, Spec §FR-003]
-- [ ] CHK003 - Are all recurring task options (daily, weekly, monthly, yearly) clearly specified with implementation requirements? [Completeness, Spec §FR-011]
-- [ ] CHK004 - Are email notification triggers (deadline reminders, account alerts) fully enumerated with content requirements? [Completeness, Spec §FR-012]
-- [ ] CHK005 - Are all API endpoint specifications complete with request/response schemas and error handling? [Completeness, Contract §API]
+- [ ] CHK001 - Are all authentication provider requirements fully specified beyond email/password and Google? [Completeness, Spec §FR-001]
+- [ ] CHK002 - Are requirements defined for handling internet connectivity failures? [Completeness, Edge Case]
+- [ ] CHK003 - Are requirements specified for managing multiple simultaneous login attempts from different devices? [Completeness, Edge Case]
+- [ ] CHK004 - Are requirements defined for handling JWT token expiration during active sessions? [Completeness, Edge Case]
+- [ ] CHK005 - Are requirements specified for email notification delivery failures and retries? [Completeness, Exception Flow]
 
 ## Requirement Clarity
 
-- [ ] CHK006 - Is "responsive UI" quantified with specific breakpoints and device compatibility requirements? [Clarity, Spec §FR-009]
-- [ ] CHK007 - Are performance targets (sub-2-second response time) defined with measurement methodology? [Clarity, Spec §SC-004]
-- [ ] CHK008 - Is "concurrent users" threshold (1000+) specified with load distribution patterns? [Clarity, Spec §SC-002]
-- [ ] CHK009 - Are JWT token expiration and refresh mechanisms quantified with specific timeframes? [Clarity, Spec §FR-010]
-- [ ] CHK010 - Is "important events" for notifications clearly defined to avoid subjective interpretation? [Clarity, Spec §FR-012]
+- [ ] CHK006 - Is "responsive UI" quantified with specific breakpoints and device requirements? [Clarity, Spec §FR-009]
+- [ ] CHK007 - Are the character limits for task titles and descriptions clearly defined with exact numbers? [Clarity, Spec §FR-003]
+- [ ] CHK008 - Is "concurrent users" defined with specific performance metrics and load parameters? [Clarity, Spec §SC-002]
+- [ ] CHK009 - Are the exact timing thresholds for "2-second response time" and "500ms" clearly specified? [Clarity, Spec §SC-004, SC-006]
+- [ ] CHK010 - Is "graceful handling" of token expiration defined with specific behaviors? [Clarity, Spec §FR-010]
 
 ## Requirement Consistency
 
-- [ ] CHK011 - Do authentication requirements align between frontend (Better Auth) and backend (JWT verification)? [Consistency, Spec §FR-002]
-- [ ] CHK012 - Are user data isolation requirements consistent across all API endpoints? [Consistency, Spec §FR-006]
-- [ ] CHK013 - Do database schema requirements align with API contract specifications? [Consistency, Data Model vs Contract]
-- [ ] CHK014 - Are success criteria consistent with functional requirements (e.g., registration time vs login requirement)? [Consistency, Spec §SC-001 vs §FR-001]
-- [ ] CHK015 - Do security requirements align with constitutional principles for authentication and data isolation? [Consistency, Constitution §II]
+- [ ] CHK011 - Do authentication requirements in spec and plan align regarding JWT implementation? [Consistency, Spec §FR-002 vs Plan]
+- [ ] CHK012 - Are the character limits for task titles consistent between spec and data model? [Consistency, Spec §FR-003 vs Data Model]
+- [ ] CHK013 - Do performance requirements align between success criteria and technical context? [Consistency, Spec §SC-006 vs Plan]
+- [ ] CHK014 - Are recurring task requirements consistent between functional requirements and data model? [Consistency, Spec §FR-011 vs Data Model]
+- [ ] CHK015 - Do email notification requirements align across functional requirements and implementation tasks? [Consistency, Spec §FR-012 vs Tasks]
 
 ## Acceptance Criteria Quality
 
-- [ ] CHK016 - Are all success criteria quantified with measurable metrics rather than qualitative statements? [Measurability, Spec §SC-001-SC-005]
-- [ ] CHK017 - Can the 95% task completion rate within 5 minutes be objectively measured and verified? [Measurability, Spec §SC-003]
-- [ ] CHK018 - Is the 99% successful request rate defined with measurement timeframe and methodology? [Measurability, Spec §SC-005]
-- [ ] CHK019 - Are performance acceptance criteria defined with specific test scenarios? [Measurability, Spec §SC-004]
-- [ ] CHK020 - Can concurrent user support be validated with specific load testing parameters? [Measurability, Spec §SC-002]
+- [ ] CHK016 - Are all acceptance scenarios measurable with objective verification methods? [Measurability, Spec §User Stories]
+- [ ] CHK017 - Can the 2-minute registration/login target be objectively measured? [Measurability, Spec §SC-001]
+- [ ] CHK018 - Is the 95% success rate for first task creation measurable with clear metrics? [Measurability, Spec §SC-003]
+- [ ] CHK019 - Can the 99% successful request rate be objectively verified? [Measurability, Spec §SC-005]
+- [ ] CHK020 - Are performance targets defined with measurable units and conditions? [Measurability, Spec §SC-006]
 
 ## Scenario Coverage
 
-- [ ] CHK021 - Are offline access scenarios addressed for users without internet connectivity? [Coverage, Edge Case, Spec §Edge Cases]
-- [ ] CHK022 - Are multiple simultaneous login scenarios from different devices fully specified? [Coverage, Edge Case, Spec §Edge Cases]
-- [ ] CHK023 - Are JWT token expiration scenarios during active sessions completely defined? [Coverage, Edge Case, Spec §Edge Cases]
-- [ ] CHK024 - Are error handling requirements defined for all API endpoints and user interactions? [Coverage, Exception Flow]
-- [ ] CHK025 - Are data migration requirements specified if upgrading from console app? [Coverage, Recovery Flow]
+- [ ] CHK021 - Are requirements defined for offline mode operation? [Coverage, Gap]
+- [ ] CHK022 - Are requirements specified for bulk task operations? [Coverage, Gap]
+- [ ] CHK023 - Are requirements defined for task import/export functionality? [Coverage, Gap]
+- [ ] CHK024 - Are requirements specified for account deletion and data retention policies? [Coverage, Gap]
+- [ ] CHK025 - Are requirements defined for password reset and account recovery? [Coverage, Gap]
+
+## Edge Case Coverage
+
+- [ ] CHK026 - Are requirements defined for handling database connection failures? [Edge Case, Gap]
+- [ ] CHK027 - Are requirements specified for handling API rate limiting? [Edge Case, Gap]
+- [ ] CHK028 - Are requirements defined for handling email service outages? [Edge Case, Gap]
+- [ ] CHK029 - Are requirements specified for handling JWT signing key rotation? [Edge Case, Gap]
+- [ ] CHK030 - Are requirements defined for handling recurring task scheduling failures? [Edge Case, Gap]
 
 ## Non-Functional Requirements
 
-- [ ] CHK026 - Are security requirements specified for all data transmission and storage? [Non-Functional, Security]
-- [ ] CHK027 - Are accessibility requirements defined for users with disabilities? [Non-Functional, Accessibility]
-- [ ] CHK028 - Are internationalization/localization requirements addressed for multi-language support? [Non-Functional, UX]
-- [ ] CHK029 - Are backup and recovery requirements specified for data protection? [Non-Functional, Reliability]
-- [ ] CHK030 - Are monitoring and logging requirements defined for operational visibility? [Non-Functional, Observability]
+- [ ] CHK031 - Are security requirements defined for protecting against common web vulnerabilities? [Security, Gap]
+- [ ] CHK032 - Are accessibility requirements specified for WCAG compliance? [Accessibility, Gap]
+- [ ] CHK033 - Are internationalization/localization requirements defined? [Internationalization, Gap]
+- [ ] CHK034 - Are backup and disaster recovery requirements specified? [Reliability, Gap]
+- [ ] CHK035 - Are monitoring and observability requirements defined? [Observability, Gap]
 
 ## Dependencies & Assumptions
 
-- [ ] CHK031 - Are external dependencies (Better Auth, Neon PostgreSQL) validated for production use? [Dependencies]
-- [ ] CHK032 - Is the assumption of continuous internet connectivity documented and validated? [Assumption]
-- [ ] CHK033 - Are third-party service dependencies (Google Auth, email service) specified with fallback options? [Dependencies]
-- [ ] CHK034 - Are database connection limitations and scaling assumptions documented? [Assumption]
-- [ ] CHK035 - Are hosting environment requirements specified for deployment? [Dependencies]
+- [ ] CHK036 - Are all external service dependencies (Google OAuth, email service) documented with fallback plans? [Dependencies, Gap]
+- [ ] CHK037 - Is the assumption about Neon PostgreSQL availability validated with SLA requirements? [Assumption, Gap]
+- [ ] CHK038 - Are the assumptions about Better Auth service availability documented? [Assumption, Gap]
+- [ ] CHK039 - Are network connectivity assumptions validated for different environments? [Assumption, Gap]
+- [ ] CHK040 - Are the assumptions about client-side storage capabilities documented? [Assumption, Gap]
 
 ## Ambiguities & Conflicts
 
-- [ ] CHK036 - Are there any conflicting requirements between performance and security objectives? [Conflict]
-- [ ] CHK037 - Is the term "modern multi-user web application" defined with specific technical characteristics? [Ambiguity]
-- [ ] CHK038 - Are there ambiguities in the definition of "personal tasks" versus shared tasks? [Ambiguity]
-- [ ] CHK039 - Are there conflicting requirements between responsive UI and performance targets? [Conflict]
-- [ ] CHK040 - Is the scope of "persistent storage" clearly defined to avoid ambiguity? [Ambiguity]
+- [ ] CHK041 - Is the term "multi-user support" defined with specific concurrency and isolation requirements? [Ambiguity, Spec §Scope]
+- [ ] CHK042 - Are the different user roles (if any) clearly defined with specific permissions? [Ambiguity, Spec §Entities]
+- [ ] CHK043 - Is the conflict between "social providers" and "email/password and Google only" resolved? [Conflict, Spec §FR-001]
+- [ ] CHK044 - Are the data retention and privacy requirements clearly specified? [Ambiguity, Gap]
+- [ ] CHK045 - Is the difference between "recurring tasks" and "recurring task instances" clearly defined? [Ambiguity, Spec §FR-011]

@@ -1,25 +1,45 @@
-# Research: Full-Stack Todo Web Application
+# Research Findings: Full-Stack Todo Web Application
 
-## Decision: Technology Stack Selection
-**Rationale**: Selected Next.js 16.1.6 with App Router for frontend due to its excellent server-side rendering capabilities, built-in optimization features, and strong TypeScript support. FastAPI for backend provides automatic API documentation, type validation, and high performance. SQLModel for database ORM offers both SQLAlchemy's power and Pydantic's data validation.
+## Decision: Next.js and FastAPI Integration Approach
+**Rationale**: Using a separate frontend (Next.js) and backend (FastAPI) allows for clear separation of concerns while maintaining flexibility. The frontend will consume RESTful API endpoints exposed by the backend.
+**Alternatives considered**: Single codebase with SSR, monorepo approach with shared components
+**Final choice**: Separate frontend/backend with API communication
 
-## Decision: Authentication Approach
-**Rationale**: Better Auth with JWT tokens provides a secure, stateless authentication system that works well with the separation between frontend and backend. It handles user registration/login securely and integrates well with Next.js and FastAPI.
+## Decision: Better Auth Implementation Strategy
+**Rationale**: Better Auth provides a robust authentication solution that handles JWT token management, user registration/login flows, and integrates well with both Next.js and FastAPI.
+**Alternatives considered**: Auth0, Clerk, custom JWT implementation
+**Final choice**: Better Auth due to simplicity and integration capabilities
 
-## Decision: Database Choice
-**Rationale**: Neon Serverless PostgreSQL provides automatic scaling, excellent reliability, and full PostgreSQL compatibility. Its serverless nature means cost efficiency during development and the ability to scale seamlessly in production.
+## Decision: Neon Serverless PostgreSQL Configuration
+**Rationale**: Neon's serverless PostgreSQL offers automatic scaling, branching, and cost-effectiveness for the application's needs.
+**Alternatives considered**: Standard PostgreSQL, MongoDB, Supabase
+**Final choice**: Neon Serverless PostgreSQL as specified in requirements
 
-## Decision: API Design Pattern
-**Rationale**: RESTful API endpoints following standard HTTP methods provide a familiar, scalable architecture that's well-understood by developers. This approach works well with the separation of concerns between frontend and backend.
+## Decision: API Contract Design
+**Rationale**: Following RESTful principles with proper HTTP methods and status codes ensures consistency and predictability.
+**Endpoints identified**:
+- POST /api/auth/register - User registration
+- POST /api/auth/login - User login
+- GET /api/tasks - Get user's tasks
+- POST /api/tasks - Create new task
+- PUT /api/tasks/{id} - Update task
+- DELETE /api/tasks/{id} - Delete task
 
 ## Decision: Task Recurrence Implementation
-**Rationale**: For recurring tasks, we'll implement a pattern where the system generates new task instances based on recurrence rules at the time of creation or when the recurrence schedule changes, rather than dynamically calculating recurring tasks on each request. This approach balances performance with functionality.
+**Rationale**: For recurring tasks, we'll implement a pattern where recurring tasks generate new instances based on their recurrence schedule.
+**Alternatives considered**: Client-side recurrence calculation, cron jobs
+**Final choice**: Server-side recurrence with scheduled task generation
 
 ## Decision: Email Notification Service
-**Rationale**: For email notifications, we'll use a service like Resend or similar that integrates well with Node.js/Next.js applications. This keeps the implementation lightweight while providing reliable delivery.
+**Rationale**: For email notifications, we'll integrate with a service like Resend or similar to handle delivery.
+**Alternatives considered**: SMTP server setup, other email services
+**Final choice**: Resend or similar service for reliability and ease of setup
 
-## Alternatives Considered:
-- For authentication: Auth0 vs. Clerk vs. Better Auth - Better Auth chosen for its open-source nature and tight Next.js integration
-- For database: MongoDB vs. PostgreSQL - PostgreSQL chosen for its ACID compliance and relational capabilities
-- For backend: Express.js vs. FastAPI vs. NestJS - FastAPI chosen for its automatic documentation and type validation
-- For frontend: React + Vite vs. Next.js vs. SvelteKit - Next.js chosen for its SSR capabilities and ecosystem
+## Decision: Testing Strategy
+**Rationale**: Following TDD principles with Jest for frontend and pytest for backend ensures comprehensive test coverage.
+**Approach**: Unit tests for individual components, integration tests for API endpoints, E2E tests for critical user flows
+
+## Decision: JWT Token Refresh Mechanism
+**Rationale**: Implementing automatic background token refresh provides a seamless user experience without interrupting their workflow.
+**Alternatives considered**: Manual refresh prompts, extended token lifetimes
+**Final choice**: Silent background refresh before token expiration

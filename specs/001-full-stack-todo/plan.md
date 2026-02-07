@@ -1,13 +1,13 @@
-# Implementation Plan: Full-Stack Todo Web Application
+# Implementation Plan: [FEATURE]
 
-**Branch**: `001-full-stack-todo` | **Date**: 2026-02-07 | **Spec**: [link to spec.md](spec.md)
-**Input**: Feature specification from `/specs/001-full-stack-todo/spec.md`
+**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
+**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
 
 **Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/sp.plan.md` for the execution workflow.
 
 ## Summary
 
-Transform the console todo application into a modern multi-user web application with persistent storage, authentication, and responsive UI. The implementation will follow a full-stack approach with Next.js frontend and FastAPI backend, connected via RESTful API endpoints. The system will use Better Auth for authentication with JWT tokens, Neon Serverless PostgreSQL for data storage, and provide comprehensive task management features including recurring tasks and email notifications.
+Transform console-based todo application into a modern multi-user web application with persistent storage, RESTful API endpoints, responsive frontend, Neon Serverless PostgreSQL database, and Better Auth authentication. The implementation will follow a full-stack approach with Next.js 16+ frontend, Python FastAPI backend, and proper JWT-based authentication to ensure secure user access and data isolation. The system will support user registration/login, task management with CRUD operations, recurring tasks, and email notifications for specific events.
 
 ## Technical Context
 
@@ -17,9 +17,14 @@ Transform the console todo application into a modern multi-user web application 
 **Testing**: Jest (frontend), pytest (backend)
 **Target Platform**: Web application (multi-user)
 **Project Type**: Full-stack web application with separate frontend and backend
-**Performance Goals**: API endpoints respond within 500ms for typical operations, support 1000+ concurrent users
-**Constraints**: JWT authentication required for all API endpoints, user data isolation, character limits on task titles (1-100 chars) and descriptions (up to 1000 chars)
-**Scale/Scope**: Multi-user support with individual task ownership, recurring tasks functionality, email notifications for important events
+**Performance Goals**: API endpoints respond within 500ms for typical operations (95% of requests under 500ms)
+**Constraints**: JWT authentication required for all API endpoints, user data isolation, automatic token refresh
+**Scale/Scope**: Multi-user support with individual task ownership
+**Authentication**: Better Auth with JWT tokens for secure communication, supporting email/password and Google OAuth
+**API Contract**: RESTful endpoints with proper HTTP methods and status codes
+**Database Schema**: SQLModel ORM with Neon Serverless PostgreSQL for type-safe operations
+**UI Framework**: Responsive design using Tailwind CSS for cross-device compatibility
+**Features**: Recurring tasks that automatically generate new instances, email notifications for deadline reminders, task assignments, and account alerts
 
 ## Constitution Check
 
@@ -38,7 +43,7 @@ Transform the console todo application into a modern multi-user web application 
 ### Documentation (this feature)
 
 ```text
-specs/001-full-stack-todo/
+specs/[###-feature]/
 ├── plan.md              # This file (/sp.plan command output)
 ├── research.md          # Phase 0 output (/sp.plan command)
 ├── data-model.md        # Phase 1 output (/sp.plan command)

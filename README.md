@@ -52,6 +52,7 @@ The API will be available at [http://localhost:8000](http://localhost:8000).
 - **Task Management**: Actionable, dependency-ordered implementation tasks
 - **Quality Assurance**: Requirements validation checklists
 - **Implementation Strategy**: User story-based development with MVP approach
+- **Cross-Artifact Analysis**: Consistency and quality validation across spec, plan, and tasks
 
 ## API Endpoints
 
@@ -65,6 +66,8 @@ The application provides the following RESTful API endpoints:
 | PUT | `/api/{user_id}/tasks/{id}` | Update a task |
 | DELETE | `/api/{user_id}/tasks/{id}` | Delete a task |
 | PATCH | `/api/{user_id}/tasks/{id}/complete` | Toggle task completion |
+| POST | `/api/auth/register` | User registration |
+| POST | `/api/auth/login` | User login |
 
 ## Authentication
 
@@ -77,9 +80,20 @@ Authorization: Bearer <jwt_token>
 ## Development Workflow
 
 This project follows the Agentic Dev Stack workflow:
-1. Write spec → Generate plan → Break into tasks → Implement via Claude Code
+1. Write spec → Generate plan → Break into tasks → Analyze consistency → Implement via Claude Code
 2. Specifications are located in the `specs/` directory
 3. All development must comply with the constitutional principles in `.specify/memory/constitution.md`
+4. Cross-artifact consistency analysis ensures alignment between spec, plan, and tasks
+
+## Features
+
+- **User Registration & Authentication**: Secure user accounts with email/password and Google OAuth
+- **Task Management**: Create, read, update, and delete personal tasks
+- **Recurring Tasks**: Automatic generation of new task instances based on recurrence patterns
+- **Data Isolation**: Each user only sees their own tasks
+- **Email Notifications**: Deadline reminders, task assignments, and account alerts
+- **Responsive UI**: Works across different device sizes
+- **Automatic Token Refresh**: Seamless background refresh of JWT tokens
 
 ## Learn More
 

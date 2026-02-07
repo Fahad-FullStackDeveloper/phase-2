@@ -63,7 +63,7 @@ As a user, I want to ensure that my tasks are only visible to me so that my pers
 
 ### Functional Requirements
 
-- **FR-001**: System MUST allow users to register with email and password credentials OR via Google authentication
+- **FR-001**: System MUST allow users to register with email and password credentials OR via Google authentication (initial implementation will focus on these two methods)
 - **FR-002**: System MUST authenticate users via Better Auth with JWT tokens
 - **FR-003**: Users MUST be able to create new tasks with title (1-100 characters) and optional description (up to 1000 characters)
 - **FR-004**: System MUST store user data in Neon Serverless PostgreSQL database
@@ -72,9 +72,9 @@ As a user, I want to ensure that my tasks are only visible to me so that my pers
 - **FR-007**: Users MUST be able to update task details including title, description, and completion status
 - **FR-008**: Users MUST be able to delete tasks from their personal list
 - **FR-009**: System MUST provide responsive UI that works across different device sizes
-- **FR-010**: System MUST handle authentication token expiration gracefully with refresh mechanisms
-- **FR-011**: System MUST support recurring tasks that repeat daily, weekly, monthly, or yearly
-- **FR-012**: System MUST send email notifications for important events like deadline reminders and account alerts
+- **FR-010**: System MUST handle authentication token expiration gracefully with automatic refresh mechanisms that operate in the background before tokens expire
+- **FR-011**: System MUST support recurring tasks that automatically generate new task instances based on their recurrence pattern (daily, weekly, monthly, or yearly)
+- **FR-012**: System MUST send email notifications for specific events: deadline reminders, task assignments, and account alerts
 
 ### Key Entities
 
@@ -87,10 +87,11 @@ As a user, I want to ensure that my tasks are only visible to me so that my pers
 ### Measurable Outcomes
 
 - **SC-001**: Users can register and log in within 2 minutes of visiting the application
-- **SC-002**: System supports at least 1000 concurrent users without performance degradation
+- **SC-002**: System supports at least 1000+ concurrent users without performance degradation
 - **SC-003**: 95% of users successfully complete their first task creation within 5 minutes of registration
 - **SC-004**: Users can create, update, and delete tasks with less than 2-second response time
 - **SC-005**: 99% of requests return successfully with proper authentication validation
+- **SC-006**: 95% of API requests respond within 500ms under normal load conditions
 
 ### Constitutional Compliance Verification
 
@@ -110,3 +111,8 @@ As a user, I want to ensure that my tasks are only visible to me so that my pers
 - Q: Should the system send email notifications to users for specific events like task deadlines or updates? → A: Yes, for important events - deadline reminders, task assignments, account alerts
 - Q: Should the application support recurring tasks that automatically create new instances based on a schedule? → A: Yes, recurring tasks - users can set tasks to repeat daily, weekly, monthly, or yearly
 - Q: What is the expected maximum file size for any attachments that users might add to their tasks? → A: Not specified in the discussion, assuming no file attachments for now
+- Q: For the authentication system, which specific providers should be implemented in the initial release? → A: Implement email/password and Google OAuth only (focus on most common)
+- Q: What specific performance targets should be defined for API response times? → A: Define specific response time targets (e.g., 95% of requests under 500ms)
+- Q: How should the system handle recurring tasks - should it create new task instances or update the same task? → A: Recurring tasks automatically generate new instances based on pattern
+- Q: For email notifications, which specific events should trigger notifications to users? → A: Send emails for deadline reminders, task assignments, account alerts
+- Q: How should the system handle JWT token refresh when tokens are close to expiration? → A: Automatically refresh JWT tokens in the background before expiration

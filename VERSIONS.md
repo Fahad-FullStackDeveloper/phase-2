@@ -3,6 +3,27 @@
 This document tracks the version history of the Todo Full-Stack Web Application, detailing changes made in each release.
 
 
+## Version 1.3.1 - February 7, 2026
+
+### Added
+- Cross-artifact consistency analysis between spec, plan, and tasks
+- Identification and resolution of constitutional compliance gaps
+- Enhanced README documentation with comprehensive feature overview
+- Additional API endpoints for authentication (register, login)
+- Improved development workflow with consistency analysis step
+- Enhanced feature list with detailed functionality descriptions
+- Added JWT token refresh mechanism implementation tasks
+- Added password reset and account recovery functionality tasks
+- Added offline mode and connectivity issue handling tasks
+- Added API rate limiting implementation tasks
+
+### Changed
+- Updated README with cross-artifact analysis and consistency validation
+- Enhanced API endpoint documentation with authentication endpoints
+- Improved development workflow documentation to include consistency analysis
+- Refined task management approach with constitutional compliance verification
+- Updated feature descriptions with detailed functionality information
+
 ## Version 1.3.0 - February 7, 2026
 
 ### Added

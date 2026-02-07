@@ -1,6 +1,6 @@
 ---
 
-description: "Task list template for feature implementation"
+description: "Task list for feature implementation"
 ---
 
 # Tasks: Full-Stack Todo Web Application
@@ -25,25 +25,6 @@ description: "Task list template for feature implementation"
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
-<!--
-  ============================================================================
-  IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
-
-  The /sp.tasks command MUST replace these with actual tasks based on:
-  - User stories from spec.md (with their priorities P1, P2, P3...)
-  - Feature requirements from plan.md
-  - Entities from data-model.md
-  - Endpoints from contracts/
-
-  Tasks MUST be organized by user story so each story can be:
-  - Implemented independently
-  - Tested independently
-  - Delivered as an MVP increment
-
-  DO NOT keep these sample tasks in the generated tasks.md file.
-  ============================================================================
--->
-
 ## Phase 1: Setup (Shared Infrastructure)
 
 **Purpose**: Project initialization and basic structure
@@ -62,8 +43,6 @@ description: "Task list template for feature implementation"
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-Examples of foundational tasks (adjust based on your project):
-
 - [ ] T006 Setup Neon PostgreSQL database schema and migrations framework
 - [ ] T007 [P] Implement Better Auth with JWT configuration for secure communication
 - [ ] T008 [P] Setup API routing and middleware structure in FastAPI backend
@@ -72,6 +51,8 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] T011 [P] Implement authentication middleware to verify JWT and extract user
 - [ ] T012 Setup email notification service integration (Resend or similar)
 - [ ] T013 Create database connection utilities for Neon PostgreSQL
+- [ ] T014 [P] Configure CORS settings for frontend-backend communication
+- [ ] T015 Set up API documentation with Swagger/OpenAPI in FastAPI
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -87,24 +68,25 @@ Examples of foundational tasks (adjust based on your project):
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T014 [P] [US1] Contract test for POST /api/auth/register in backend/tests/contract/test_auth.py
-- [ ] T015 [P] [US1] Contract test for POST /api/auth/login in backend/tests/contract/test_auth.py
-- [ ] T016 [P] [US1] Integration test for user registration flow in backend/tests/integration/test_auth.py
-- [ ] T017 [P] [US1] Frontend component test for registration form in frontend/tests/components/test_registration.tsx
+- [ ] T016 [P] [US1] Contract test for POST /api/auth/register in backend/tests/contract/test_auth.py
+- [ ] T017 [P] [US1] Contract test for POST /api/auth/login in backend/tests/contract/test_auth.py
+- [ ] T018 [P] [US1] Integration test for user registration flow in backend/tests/integration/test_auth.py
+- [ ] T019 [P] [US1] Frontend component test for registration form in frontend/tests/components/test_registration.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T018 [P] [US1] Create User model in backend/src/models/user.py with SQLModel
-- [ ] T019 [P] [US1] Create Session model in backend/src/models/session.py with SQLModel
-- [ ] T020 [US1] Implement User service in backend/src/services/user_service.py (depends on T018)
-- [ ] T021 [US1] Implement authentication service in backend/src/services/auth_service.py
-- [ ] T022 [US1] Implement POST /api/auth/register endpoint in backend/src/routes/auth_routes.py
-- [ ] T023 [US1] Implement POST /api/auth/login endpoint in backend/src/routes/auth_routes.py
-- [ ] T024 [US1] Create Registration component in frontend/src/components/Registration.tsx
-- [ ] T025 [US1] Create Login component in frontend/src/components/Login.tsx
-- [ ] T026 [US1] Add API client function for authentication in frontend/src/lib/api.ts
-- [ ] T027 [US1] Add validation and error handling for authentication operations
-- [ ] T028 [US1] Add logging for user story 1 operations
+- [ ] T020 [P] [US1] Create User model in backend/src/models/user.py with SQLModel
+- [ ] T021 [P] [US1] Create Session model in backend/src/models/session.py with SQLModel
+- [ ] T022 [US1] Implement User service in backend/src/services/user_service.py (depends on T020)
+- [ ] T023 [US1] Implement authentication service in backend/src/services/auth_service.py
+- [ ] T024 [US1] Implement POST /api/auth/register endpoint in backend/src/routes/auth_routes.py
+- [ ] T025 [US1] Implement POST /api/auth/login endpoint in backend/src/routes/auth_routes.py
+- [ ] T026 [US1] Create Registration component in frontend/src/components/Registration.tsx
+- [ ] T027 [US1] Create Login component in frontend/src/components/Login.tsx
+- [ ] T028 [US1] Add API client function for authentication in frontend/src/lib/api.ts
+- [ ] T029 [US1] Add validation and error handling for authentication operations
+- [ ] T030 [US1] Add logging for user story 1 operations
+- [ ] T031 [US1] Create user profile page in frontend/src/pages/profile.tsx
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -118,27 +100,28 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T029 [P] [US2] Contract test for GET /api/{user_id}/tasks in backend/tests/contract/test_tasks.py
-- [ ] T030 [P] [US2] Contract test for POST /api/{user_id}/tasks in backend/tests/contract/test_tasks.py
-- [ ] T031 [P] [US2] Integration test for task creation flow in backend/tests/integration/test_tasks.py
-- [ ] T032 [P] [US2] Frontend component test for TaskForm in frontend/tests/components/test_task_form.tsx
+- [ ] T032 [P] [US2] Contract test for GET /api/tasks in backend/tests/contract/test_tasks.py
+- [ ] T033 [P] [US2] Contract test for POST /api/tasks in backend/tests/contract/test_tasks.py
+- [ ] T034 [P] [US2] Integration test for task creation flow in backend/tests/integration/test_tasks.py
+- [ ] T035 [P] [US2] Frontend component test for TaskForm in frontend/tests/components/test_task_form.tsx
 
 ### Implementation for User Story 2
 
-- [ ] T033 [P] [US2] Create Task model in backend/src/models/task.py with SQLModel
-- [ ] T034 [US2] Implement Task service in backend/src/services/task_service.py (depends on T033)
-- [ ] T035 [US2] Implement GET /api/{user_id}/tasks endpoint in backend/src/routes/task_routes.py
-- [ ] T036 [US2] Implement POST /api/{user_id}/tasks endpoint in backend/src/routes/task_routes.py
-- [ ] T037 [US2] Implement GET /api/{user_id}/tasks/{id} endpoint in backend/src/routes/task_routes.py
-- [ ] T038 [US2] Implement PUT /api/{user_id}/tasks/{id} endpoint in backend/src/routes/task_routes.py
-- [ ] T039 [US2] Implement DELETE /api/{user_id}/tasks/{id} endpoint in backend/src/routes/task_routes.py
-- [ ] T040 [US2] Implement PATCH /api/{user_id}/tasks/{id}/complete endpoint in backend/src/routes/task_routes.py
-- [ ] T041 [US2] Create TaskList component in frontend/src/components/TaskList.tsx
-- [ ] T042 [US2] Create TaskForm component in frontend/src/components/TaskForm.tsx
-- [ ] T043 [US2] Create TaskDetail component in frontend/src/components/TaskDetail.tsx
-- [ ] T044 [US2] Add API client functions for task operations in frontend/src/lib/api.ts
-- [ ] T45 [US2] Add validation and error handling for task operations (1-100 chars for title, up to 1000 chars for description)
-- [ ] T046 [US2] Add recurring task functionality (daily, weekly, monthly, yearly) in task model and service
+- [ ] T036 [P] [US2] Create Task model in backend/src/models/task.py with SQLModel
+- [ ] T037 [US2] Implement Task service in backend/src/services/task_service.py (depends on T036)
+- [ ] T038 [US2] Implement GET /api/tasks endpoint in backend/src/routes/task_routes.py
+- [ ] T039 [US2] Implement POST /api/tasks endpoint in backend/src/routes/task_routes.py
+- [ ] T040 [US2] Implement GET /api/tasks/{id} endpoint in backend/src/routes/task_routes.py
+- [ ] T041 [US2] Implement PUT /api/tasks/{id} endpoint in backend/src/routes/task_routes.py
+- [ ] T042 [US2] Implement DELETE /api/tasks/{id} endpoint in backend/src/routes/task_routes.py
+- [ ] T043 [US2] Implement PATCH /api/tasks/{id}/complete endpoint in backend/src/routes/task_routes.py
+- [ ] T044 [US2] Create TaskList component in frontend/src/components/TaskList.tsx
+- [ ] T045 [US2] Create TaskForm component in frontend/src/components/TaskForm.tsx
+- [ ] T046 [US2] Create TaskDetail component in frontend/src/components/TaskDetail.tsx
+- [ ] T047 [US2] Add API client functions for task operations in frontend/src/lib/api.ts
+- [ ] T048 [US2] Add validation and error handling for task operations (1-100 chars for title, up to 1000 chars for description)
+- [ ] T049 [US2] Add recurring task functionality (daily, weekly, monthly, yearly) in task model and service
+- [ ] T050 [US2] Create task dashboard page in frontend/src/pages/dashboard.tsx
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -152,40 +135,42 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T047 [P] [US3] Integration test for user data isolation in backend/tests/integration/test_isolation.py
-- [ ] T048 [P] [US3] Contract test for unauthorized access attempts in backend/tests/contract/test_security.py
-- [ ] T049 [P] [US3] Frontend component test for user-specific data display in frontend/tests/components/test_dashboard.tsx
+- [ ] T051 [P] [US3] Integration test for user data isolation in backend/tests/integration/test_isolation.py
+- [ ] T052 [P] [US3] Contract test for unauthorized access attempts in backend/tests/contract/test_security.py
+- [ ] T053 [P] [US3] Frontend component test for user-specific data display in frontend/tests/components/test_dashboard.tsx
 
 ### Implementation for User Story 3
 
-- [ ] T050 [P] [US3] Enhance authentication middleware to verify user ID in URL matches JWT token
-- [ ] T051 [US3] Add user ID filtering to all task endpoints to ensure data isolation
-- [ ] T052 [US3] Implement authorization checks in task service layer
-- [ ] T053 [US3] Add user-specific data validation in frontend API calls
-- [ ] T054 [US3] Create Dashboard component in frontend/src/components/Dashboard.tsx
-- [ ] T055 [US3] Add email notification functionality for important events (deadline reminders, account alerts)
-- [ ] T056 [US3] Implement recurring task generation based on recurrence patterns
-- [ ] T057 [US3] Add responsive UI components that work across different device sizes
+- [ ] T054 [P] [US3] Enhance authentication middleware to verify user ID in URL matches JWT token
+- [ ] T055 [US3] Add user ID filtering to all task endpoints to ensure data isolation
+- [ ] T056 [US3] Implement authorization checks in task service layer
+- [ ] T057 [US3] Add user-specific data validation in frontend API calls
+- [ ] T058 [US3] Create Dashboard component in frontend/src/components/Dashboard.tsx
+- [ ] T059 [US3] Add email notification functionality for important events (deadline reminders, account alerts)
+- [ ] T060 [US3] Implement recurring task generation based on recurrence patterns
+- [ ] T061 [US3] Add responsive UI components that work across different device sizes
+- [ ] T062 [US3] Add security headers and protections against common web vulnerabilities
 
 **Checkpoint**: All user stories should now be independently functional
 
 ---
 
-[Add more user story phases as needed, following the same pattern]
-
----
-
-## Phase N: Polish & Cross-Cutting Concerns
+## Phase 6: Polish & Cross-Cutting Concerns
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T058 [P] Documentation updates in docs/
-- [ ] T059 Code cleanup and refactoring
-- [ ] T060 Performance optimization across all stories
-- [ ] T061 [P] Additional unit tests (if requested) in tests/unit/
-- [ ] T062 Security hardening (ensure all endpoints require JWT, user isolation enforced)
-- [ ] T063 Run quickstart.md validation
-- [ ] T064 Constitutional compliance verification
+- [ ] T063 [P] Documentation updates in docs/
+- [ ] T064 Code cleanup and refactoring
+- [ ] T065 Performance optimization across all stories
+- [ ] T066 [P] Additional unit tests (if requested) in tests/unit/
+- [ ] T067 Security hardening (ensure all endpoints require JWT, user isolation enforced)
+- [ ] T068 Run quickstart.md validation
+- [ ] T069 Constitutional compliance verification
+- [ ] T070 Add comprehensive error handling and user-friendly error messages
+- [ ] T071 Implement caching strategies for improved performance
+- [ ] T072 Add monitoring and observability features
+- [ ] T073 Set up automated testing pipeline
+- [ ] T074 Prepare deployment configurations for production
 
 ---
 
