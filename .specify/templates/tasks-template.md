@@ -25,21 +25,21 @@ description: "Task list template for feature implementation"
 - **Mobile**: `api/src/`, `ios/src/` or `android/src/`
 - Paths shown below assume single project - adjust based on plan.md structure
 
-<!-- 
+<!--
   ============================================================================
   IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
-  
+
   The /sp.tasks command MUST replace these with actual tasks based on:
   - User stories from spec.md (with their priorities P1, P2, P3...)
   - Feature requirements from plan.md
   - Entities from data-model.md
   - Endpoints from contracts/
-  
+
   Tasks MUST be organized by user story so each story can be:
   - Implemented independently
   - Tested independently
   - Delivered as an MVP increment
-  
+
   DO NOT keep these sample tasks in the generated tasks.md file.
   ============================================================================
 -->
@@ -48,9 +48,10 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+- [ ] T001 Create project structure per implementation plan with backend/ and frontend/ directories
+- [ ] T002 Initialize Next.js project with TypeScript and Tailwind CSS in frontend/
+- [ ] T003 Initialize FastAPI project with SQLModel and database dependencies in backend/
+- [ ] T004 [P] Configure linting and formatting tools for both frontend and backend
 
 ---
 
@@ -62,12 +63,13 @@ description: "Task list template for feature implementation"
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T005 Setup Neon PostgreSQL database schema and migrations framework
+- [ ] T006 [P] Implement Better Auth with JWT configuration for secure communication
+- [ ] T007 [P] Setup API routing and middleware structure in FastAPI backend
+- [ ] T008 Create base models/entities that all stories depend on (users, tasks)
+- [ ] T009 Configure error handling and logging infrastructure for both frontend and backend
+- [ ] T010 Setup environment configuration management with proper secret handling
+- [ ] T011 [P] Implement authentication middleware to verify JWT and extract user
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -83,17 +85,22 @@ Examples of foundational tasks (adjust based on your project):
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T012 [P] [US1] Contract test for [endpoint] in backend/tests/contract/test_[name].py
+- [ ] T013 [P] [US1] Integration test for [user journey] in backend/tests/integration/test_[name].py
+- [ ] T014 [P] [US1] Frontend component test for [UI element] in frontend/tests/components/test_[name].tsx
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
-- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T016 [US1] Add validation and error handling
-- [ ] T017 [US1] Add logging for user story 1 operations
+- [ ] T015 [P] [US1] Create Task model in backend/src/models/task.py with SQLModel
+- [ ] T016 [P] [US1] Create User model in backend/src/models/user.py (managed by Better Auth)
+- [ ] T017 [US1] Implement Task service in backend/src/services/task_service.py (depends on T015)
+- [ ] T018 [US1] Implement GET /api/{user_id}/tasks endpoint in backend/src/routes/task_routes.py
+- [ ] T019 [US1] Implement POST /api/{user_id}/tasks endpoint in backend/src/routes/task_routes.py
+- [ ] T020 [US1] Create TaskList component in frontend/src/components/TaskList.tsx
+- [ ] T021 [US1] Create TaskForm component in frontend/src/components/TaskForm.tsx
+- [ ] T022 [US1] Add API client function for task operations in frontend/src/lib/api.ts
+- [ ] T023 [US1] Add validation and error handling for task operations
+- [ ] T024 [US1] Add logging for user story 1 operations
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -107,15 +114,20 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T025 [P] [US2] Contract test for [endpoint] in backend/tests/contract/test_[name].py
+- [ ] T026 [P] [US2] Integration test for [user journey] in backend/tests/integration/test_[name].py
+- [ ] T027 [P] [US2] Frontend component test for [UI element] in frontend/tests/components/test_[name].tsx
 
 ### Implementation for User Story 2
 
-- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T021 [US2] Implement [Service] in src/services/[service].py
-- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
+- [ ] T028 [P] [US2] Create additional models if needed in backend/src/models/
+- [ ] T029 [US2] Implement GET /api/{user_id}/tasks/{id} endpoint in backend/src/routes/task_routes.py
+- [ ] T030 [US2] Implement PUT /api/{user_id}/tasks/{id} endpoint in backend/src/routes/task_routes.py
+- [ ] T031 [US2] Implement DELETE /api/{user_id}/tasks/{id} endpoint in backend/src/routes/task_routes.py
+- [ ] T032 [US2] Create TaskDetail component in frontend/src/components/TaskDetail.tsx
+- [ ] T033 [US2] Create TaskEdit component in frontend/src/components/TaskEdit.tsx
+- [ ] T034 [US2] Add API client functions for detailed task operations in frontend/src/lib/api.ts
+- [ ] T035 [US2] Integrate with User Story 1 components (if needed)
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -129,14 +141,18 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
+- [ ] T036 [P] [US3] Contract test for [endpoint] in backend/tests/contract/test_[name].py
+- [ ] T037 [P] [US3] Integration test for [user journey] in backend/tests/integration/test_[name].py
+- [ ] T038 [P] [US3] Frontend component test for [UI element] in frontend/tests/components/test_[name].tsx
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T027 [US3] Implement [Service] in src/services/[service].py
-- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
+- [ ] T039 [P] [US3] Create additional models if needed in backend/src/models/
+- [ ] T040 [US3] Implement PATCH /api/{user_id}/tasks/{id}/complete endpoint in backend/src/routes/task_routes.py
+- [ ] T041 [US3] Create TaskCompletion component in frontend/src/components/TaskCompletion.tsx
+- [ ] T042 [US3] Add API client functions for task completion in frontend/src/lib/api.ts
+- [ ] T043 [US3] Add user authentication checks to all frontend API calls
+- [ ] T044 [US3] Add responsive design enhancements to task components
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -154,8 +170,9 @@ Examples of foundational tasks (adjust based on your project):
 - [ ] TXXX Code cleanup and refactoring
 - [ ] TXXX Performance optimization across all stories
 - [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
-- [ ] TXXX Security hardening
+- [ ] TXXX Security hardening (ensure all endpoints require JWT, user isolation enforced)
 - [ ] TXXX Run quickstart.md validation
+- [ ] TXXX Constitutional compliance verification
 
 ---
 
@@ -199,12 +216,12 @@ Examples of foundational tasks (adjust based on your project):
 
 ```bash
 # Launch all tests for User Story 1 together (if tests requested):
-Task: "Contract test for [endpoint] in tests/contract/test_[name].py"
-Task: "Integration test for [user journey] in tests/integration/test_[name].py"
+Task: "Contract test for [endpoint] in backend/tests/contract/test_[name].py"
+Task: "Integration test for [user journey] in backend/tests/integration/test_[name].py"
 
 # Launch all models for User Story 1 together:
-Task: "Create [Entity1] model in src/models/[entity1].py"
-Task: "Create [Entity2] model in src/models/[entity2].py"
+Task: "Create Task model in backend/src/models/task.py"
+Task: "Create User model in backend/src/models/user.py"
 ```
 
 ---
@@ -239,6 +256,15 @@ With multiple developers:
 3. Stories complete and integrate independently
 
 ---
+
+## Constitutional Compliance Verification
+
+- [ ] Full-Stack Integration: Tasks address both frontend and backend components
+- [ ] User-Centric Authentication: JWT authentication implemented between layers
+- [ ] Test-First: Test tasks defined before implementation tasks
+- [ ] API-First Design: API contracts clearly defined and implemented
+- [ ] Persistent Data Management: Database operations properly handled
+- [ ] Responsive User Experience: UI/UX considerations addressed
 
 ## Notes
 
