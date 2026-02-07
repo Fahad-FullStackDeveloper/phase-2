@@ -41,7 +41,7 @@ The API will be available at [http://localhost:8000](http://localhost:8000).
 ## Technology Stack
 
 - **Frontend**: Next.js 16.1.6 (App Router), TypeScript, Tailwind CSS
-- **Backend**: Python FastAPI
+- **Backend**: Python FastAPI 0.115+
 - **ORM**: SQLModel
 - **Database**: Neon Serverless PostgreSQL
 - **Authentication**: Better Auth with JWT integration

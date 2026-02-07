@@ -3,6 +3,23 @@
 This document tracks the version history of the Todo Full-Stack Web Application, detailing changes made in each release.
 
 
+## Version 1.2.0 - February 7, 2026
+
+### Added
+- Implementation planning artifacts (research.md, data-model.md, API contracts, quickstart.md)
+- Detailed API contracts with authentication and task management endpoints
+- Data models for User, Task, and Session entities with validation rules
+- Quickstart guide for setting up the full-stack application
+- Research documentation covering technology decisions and rationale
+- Constitutional compliance verification for all core principles
+
+### Changed
+- Enhanced with recurring tasks functionality and email notifications
+- Updated Next.js version from 16.1.1 to 16.1.6
+- Improved API design with comprehensive endpoint specifications
+- Refined authentication approach with JWT token management
+- Enhanced data isolation and security measures
+
 ## Version 1.1.0 - February 7, 2026
 
 ### Changed
