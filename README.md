@@ -46,6 +46,9 @@ The API will be available at [http://localhost:8000](http://localhost:8000).
 - **Database**: Neon Serverless PostgreSQL
 - **Authentication**: Better Auth with JWT integration
 - **Spec-Driven Development**: Claude Code + Spec-Kit Plus
+- **API Design**: RESTful endpoints with comprehensive contracts
+- **Data Modeling**: Structured entities with validation rules
+- **Documentation**: Implementation planning artifacts and quickstart guides
 
 ## API Endpoints
 
