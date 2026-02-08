@@ -4,8 +4,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlmodel import Session
 import os
-from ..models.user import User
-from ..models.session import Session as SessionModel
+from ..models.user import User, Session as SessionModel
 from ..services.user_service import UserService
 
 # Get secret from environment

@@ -1,10 +1,11 @@
+// frontend/src/app/dashboard/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
 import { TaskList } from '@/components/TaskList';
 import { TaskForm } from '@/components/TaskForm';
 
-export default function Home() {
+export default function DashboardPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<any>(null);
 

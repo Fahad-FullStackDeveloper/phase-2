@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import Session
 from typing import Optional
 from uuid import UUID
-from ..database import get_session
-from ..models.task import Task, TaskBase
-from ..models.user import User
-from ..services.task_service import TaskService
-from ..services.auth_service import AuthService
+from src.database import get_session
+from src.models.task import Task, TaskBase
+from src.models.user import User
+from src.services.task_service import TaskService
+from src.services.auth_service import AuthService
 
 router = APIRouter(prefix="/tasks", tags=["Tasks"])
 
@@ -29,7 +29,7 @@ def get_tasks(
     completed: Optional[bool] = None,
     limit: int = 20,
     offset: int = 0,
-    token: str = Depends(...),  # In a real app, this would be handled by a security dependency
+    token: str = Depends(lambda: ...),  # In a real app, this would be handled by a security dependency
     session: Session = Depends(get_session)
 ):
     """Get user's tasks"""
@@ -53,7 +53,7 @@ def get_tasks(
 @router.post("/")
 def create_task(
     task_data: TaskBase,
-    token: str = Depends(...),  # In a real app, this would be handled by a security dependency
+    token: str = Depends(lambda: ...),  # In a real app, this would be handled by a security dependency
     session: Session = Depends(get_session)
 ):
     """Create a new task for the authenticated user"""
@@ -72,7 +72,7 @@ def create_task(
 @router.get("/{task_id}")
 def get_task(
     task_id: UUID,
-    token: str = Depends(...),  # In a real app, this would be handled by a security dependency
+    token: str = Depends(lambda: ...),  # In a real app, this would be handled by a security dependency
     session: Session = Depends(get_session)
 ):
     """Get a specific task by ID for the authenticated user"""
@@ -97,7 +97,7 @@ def get_task(
 def update_task(
     task_id: UUID,
     task_data: TaskBase,
-    token: str = Depends(...),  # In a real app, this would be handled by a security dependency
+    token: str = Depends(lambda: ...),  # In a real app, this would be handled by a security dependency
     session: Session = Depends(get_session)
 ):
     """Update an existing task for the authenticated user"""
@@ -122,7 +122,7 @@ def update_task(
 @router.delete("/{task_id}")
 def delete_task(
     task_id: UUID,
-    token: str = Depends(...),  # In a real app, this would be handled by a security dependency
+    token: str = Depends(lambda: ...),  # In a real app, this would be handled by a security dependency
     session: Session = Depends(get_session)
 ):
     """Delete a task for the authenticated user"""
@@ -146,7 +146,7 @@ def delete_task(
 @router.patch("/{task_id}/complete")
 def toggle_task_completion(
     task_id: UUID,
-    token: str = Depends(...),  # In a real app, this would be handled by a security dependency
+    token: str = Depends(lambda: ...),  # In a real app, this would be handled by a security dependency
     session: Session = Depends(get_session)
 ):
     """Toggle the completion status of a task"""

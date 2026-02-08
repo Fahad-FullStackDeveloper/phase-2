@@ -3,6 +3,24 @@
 This document tracks the version history of the Todo Full-Stack Web Application, detailing changes made in each release.
 
 
+## Version 1.4.0 - February 8, 2026
+
+### Added
+- Fixed backend server startup issues and dependency installations
+- Resolved LightningCSS module issues for Windows compatibility
+- Corrected API endpoint configuration to remove redundant '/api' prefix
+- Fixed import issues in auth_service.py for Session model
+- Fixed dependency issues in task_routes.py with incorrect Depends(...) statements
+- Updated frontend API configuration to properly connect with backend endpoints
+- Added detailed troubleshooting steps for common setup issues
+- Enhanced cross-platform compatibility for Windows development environments
+
+### Changed
+- Updated API_BASE_URL in frontend to correctly map to backend endpoints
+- Fixed authentication flow to properly handle JWT token exchanges
+- Improved error handling for API communication between frontend and backend
+- Enhanced documentation with detailed setup instructions for Windows users
+
 ## Version 1.3.2 - February 7, 2026
 
 ### Added

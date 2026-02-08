@@ -10,7 +10,7 @@ description: "Task list for feature implementation"
 
 **Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
 
-**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
+**Organization**: Tasks are grouped by user story to enable independent implementation and testing.
 
 ## Format: `[ID] [P?] [Story] Description`
 
@@ -68,10 +68,10 @@ description: "Task list for feature implementation"
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T016 [P] [US1] Contract test for POST /api/auth/register in backend/tests/contract/test_auth.py
-- [ ] T017 [P] [US1] Contract test for POST /api/auth/login in backend/tests/contract/test_auth.py
-- [ ] T018 [P] [US1] Integration test for user registration flow in backend/tests/integration/test_auth.py
-- [ ] T019 [P] [US1] Frontend component test for registration form in frontend/tests/components/test_registration.tsx
+- [X] T016 [P] [US1] Contract test for POST /api/auth/register in backend/tests/contract/test_auth.py
+- [X] T017 [P] [US1] Contract test for POST /api/auth/login in backend/tests/contract/test_auth.py
+- [X] T018 [P] [US1] Integration test for user registration flow in backend/tests/integration/test_auth.py
+- [X] T019 [P] [US1] Frontend component test for registration form in frontend/tests/components/test_registration.tsx
 
 ### Implementation for User Story 1
 
@@ -100,10 +100,10 @@ description: "Task list for feature implementation"
 
 ### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T032 [P] [US2] Contract test for GET /api/tasks in backend/tests/contract/test_tasks.py
-- [ ] T033 [P] [US2] Contract test for POST /api/tasks in backend/tests/contract/test_tasks.py
-- [ ] T034 [P] [US2] Integration test for task creation flow in backend/tests/integration/test_tasks.py
-- [ ] T035 [P] [US2] Frontend component test for TaskForm in frontend/tests/components/test_task_form.tsx
+- [X] T032 [P] [US2] Contract test for GET /api/tasks in backend/tests/contract/test_tasks.py
+- [X] T033 [P] [US2] Contract test for POST /api/tasks in backend/tests/contract/test_tasks.py
+- [X] T034 [P] [US2] Integration test for task creation flow in backend/tests/integration/test_tasks.py
+- [X] T035 [P] [US2] Frontend component test for TaskForm in frontend/tests/components/test_task_form.tsx
 
 ### Implementation for User Story 2
 
@@ -135,9 +135,9 @@ description: "Task list for feature implementation"
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T051 [P] [US3] Integration test for user data isolation in backend/tests/integration/test_isolation.py
-- [ ] T052 [P] [US3] Contract test for unauthorized access attempts in backend/tests/contract/test_security.py
-- [ ] T053 [P] [US3] Frontend component test for user-specific data display in frontend/tests/components/test_dashboard.tsx
+- [X] T051 [P] [US3] Integration test for user data isolation in backend/tests/integration/test_isolation.py
+- [X] T052 [P] [US3] Contract test for unauthorized access attempts in backend/tests/contract/test_security.py
+- [X] T053 [P] [US3] Frontend component test for user-specific data display in frontend/tests/components/test_dashboard.tsx
 
 ### Implementation for User Story 3
 
